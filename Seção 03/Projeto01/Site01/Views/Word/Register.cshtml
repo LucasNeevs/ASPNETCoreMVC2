@@ -1,0 +1,28 @@
+﻿@model Site01.Models.Word
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="container myForm">
+    <form id="my-form" method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div class="mb-3">
+            <label for="WordName" class="form-label">Word</label>
+            <input type="text" value="@Model.WordName" name="WordName" class="form-control" id="WordName">
+            @Html.ValidationMessage("WordName")
+        </div>
+        <div class="mb-3">
+            <label for="WordLevel" class="form-label">Level</label>
+            <input type="text" value="@Model.WordLevel" name="WordLevel" class="form-control" id="WordLevel">
+            @Html.ValidationMessage("WordLevel")
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+   <!--@ViewBag.Message-->
+</div>
+

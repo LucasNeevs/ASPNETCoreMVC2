@@ -1,0 +1,48 @@
+﻿@model X.PagedList.IPagedList<Site01.Models.Word>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    ViewBag.Title = "List of Words";
+}
+
+<link href="~/Css/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="container myForm">
+    <div class="container registerContainer">
+        <span class="mySpan">Total de registros: @Model.TotalItemCount</span>
+        <a href="/word/register" class="btn myBtn">Register</a>
+    </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Word</th>
+                <th scope="col">Level</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var word in Model)
+            {
+                <tr>
+                    <th scope="row">@word.Id</th>
+                    <td>@word.WordName</td>
+                    <td>@word.WordLevel</td>
+                    <td>
+                        <a href="/word/update/@word.Id" class="btn updateBtn">Edit</a>
+                        <a href="/word/delete/@word.Id" class="btn excludeBtn">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+

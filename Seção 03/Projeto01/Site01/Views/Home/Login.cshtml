@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    ViewBag.Title = "Login";
+}
+
+<div class="container myForm">
+    <form id="my-form" method="post" action="/home/login">
+        <div class="mb-3">
+            <label for="email-field" class="form-label">Email</label>
+            <input type="text" value="" name="email" class="form-control" id="email-field" placeholder="Input your email">
+            @Html.ValidationMessage("email")
+        </div>
+        <div class="mb-3">
+            <label for="name-field" class="form-label">Password</label>
+            <input type="password" value="" name="password" class="form-control" id="name-field" placeholder="Input your password">
+            @Html.ValidationMessage("password")
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="showData()">Submit</button>
+    </form>
+    @ViewBag.Message
+</div>

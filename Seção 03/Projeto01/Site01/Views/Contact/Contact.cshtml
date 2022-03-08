@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<div class="container myForm">
+    <form id="my-form" method="post" action="/contact/receive">
+        <div class="mb-3">
+            <label for="name-field" class="form-label">Name</label>
+            <input type="text" value="@ViewBag.Contact.Name" name="name" class="form-control" id="name-field">
+            @Html.ValidationMessage("name")
+        </div>
+        <div class="mb-3">
+            <label for="email-field" class="form-label">Email</label>
+            <input type="text" value="@ViewBag.Contact.Email" name="email" class="form-control" id="email-field">
+            @Html.ValidationMessage("email")
+        </div>
+        <div class="mb-3">
+            <label for="description-field" class="form-label">Description</label>
+            <input type="text" value="@ViewBag.Contact.Description" name="description" class="form-control" id="description-field">
+            @Html.ValidationMessage("description")
+        </div>
+        <div class="mb-3">
+            <label for="message-field" class="form-label">Message</label>
+            <textarea type="text" value="@ViewBag.Contact.Message" name="message" rows="8" class="form-control" id="message-field"></textarea>
+            @Html.ValidationMessage("message")
+        </div>
+        <!--<div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>-->
+        <button type="submit" class="btn btn-primary" onclick="showData()">Submit</button>
+    </form>
+    @ViewBag.Message
+</div>
